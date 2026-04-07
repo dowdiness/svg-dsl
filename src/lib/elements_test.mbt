@@ -5,7 +5,16 @@ test "basic rect creation" {
   let r = @lib.rect(x=10.0, y=20.0, width=100.0, height=50.0)
   inspect(
     r,
-    content="Rect(attrs=[{name: \"x\", value: \"10\"}, {name: \"y\", value: \"20\"}, {name: \"width\", value: \"100\"}, {name: \"height\", value: \"50\"}])",
+    content=(
+      #|Rect(
+      #|  attrs=[
+      #|    { name: "x", value: "10" },
+      #|    { name: "y", value: "20" },
+      #|    { name: "width", value: "100" },
+      #|    { name: "height", value: "50" },
+      #|  ],
+      #|)
+    ),
   )
 }
 
@@ -21,7 +30,18 @@ test "rect with rounded corners" {
   )
   inspect(
     r,
-    content="Rect(attrs=[{name: \"x\", value: \"0\"}, {name: \"y\", value: \"0\"}, {name: \"width\", value: \"100\"}, {name: \"height\", value: \"100\"}, {name: \"rx\", value: \"5\"}, {name: \"ry\", value: \"5\"}])",
+    content=(
+      #|Rect(
+      #|  attrs=[
+      #|    { name: "x", value: "0" },
+      #|    { name: "y", value: "0" },
+      #|    { name: "width", value: "100" },
+      #|    { name: "height", value: "100" },
+      #|    { name: "rx", value: "5" },
+      #|    { name: "ry", value: "5" },
+      #|  ],
+      #|)
+    ),
   )
 }
 
@@ -30,7 +50,15 @@ test "basic circle creation" {
   let c = @lib.circle(cx=50.0, cy=50.0, r=25.0)
   inspect(
     c,
-    content="Circle(attrs=[{name: \"cx\", value: \"50\"}, {name: \"cy\", value: \"50\"}, {name: \"r\", value: \"25\"}])",
+    content=(
+      #|Circle(
+      #|  attrs=[
+      #|    { name: "cx", value: "50" },
+      #|    { name: "cy", value: "50" },
+      #|    { name: "r", value: "25" },
+      #|  ],
+      #|)
+    ),
   )
 }
 
@@ -39,7 +67,16 @@ test "basic line creation" {
   let l = @lib.line(x1=0.0, y1=0.0, x2=100.0, y2=100.0)
   inspect(
     l,
-    content="Line(attrs=[{name: \"x1\", value: \"0\"}, {name: \"y1\", value: \"0\"}, {name: \"x2\", value: \"100\"}, {name: \"y2\", value: \"100\"}])",
+    content=(
+      #|Line(
+      #|  attrs=[
+      #|    { name: "x1", value: "0" },
+      #|    { name: "y1", value: "0" },
+      #|    { name: "x2", value: "100" },
+      #|    { name: "y2", value: "100" },
+      #|  ],
+      #|)
+    ),
   )
 }
 
@@ -48,7 +85,12 @@ test "text element" {
   let t = @lib.text("Hello", x=10.0, y=20.0)
   inspect(
     t,
-    content="Text(content=\"Hello\", attrs=[{name: \"x\", value: \"10\"}, {name: \"y\", value: \"20\"}])",
+    content=(
+      #|Text(
+      #|  content="Hello",
+      #|  attrs=[{ name: "x", value: "10" }, { name: "y", value: "20" }],
+      #|)
+    ),
   )
 }
 
@@ -57,7 +99,9 @@ test "polyline creation" {
   let p = @lib.polyline([(0.0, 0.0), (50.0, 25.0), (100.0, 0.0)])
   inspect(
     p,
-    content="Polyline(attrs=[{name: \"points\", value: \"0,0 50,25 100,0\"}])",
+    content=(
+      #|Polyline(attrs=[{ name: "points", value: "0,0 50,25 100,0" }])
+    ),
   )
 }
 
@@ -71,7 +115,9 @@ test "path from commands" {
   ])
   inspect(
     p,
-    content="Path(attrs=[{name: \"d\", value: \"M0 0 L100 0 L100 100 Z\"}])",
+    content=(
+      #|Path(attrs=[{ name: "d", value: "M0 0 L100 0 L100 100 Z" }])
+    ),
   )
 }
 
@@ -83,7 +129,19 @@ test "fluent API - fill and stroke" {
     .stroke_width(2.0)
   inspect(
     r,
-    content="Rect(attrs=[{name: \"x\", value: \"0\"}, {name: \"y\", value: \"0\"}, {name: \"width\", value: \"100\"}, {name: \"height\", value: \"100\"}, {name: \"fill\", value: \"#3498db\"}, {name: \"stroke\", value: \"#2c3e50\"}, {name: \"stroke-width\", value: \"2\"}])",
+    content=(
+      #|Rect(
+      #|  attrs=[
+      #|    { name: "x", value: "0" },
+      #|    { name: "y", value: "0" },
+      #|    { name: "width", value: "100" },
+      #|    { name: "height", value: "100" },
+      #|    { name: "fill", value: "#3498db" },
+      #|    { name: "stroke", value: "#2c3e50" },
+      #|    { name: "stroke-width", value: "2" },
+      #|  ],
+      #|)
+    ),
   )
 }
 
