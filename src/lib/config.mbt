@@ -18,7 +18,7 @@ pub struct SvgConfig {
   default_stroke_width : Double
   /// Default font size
   default_font_size : Double
-} derive(Show, Eq)
+} derive(Debug, Eq)
 
 ///|
 /// Implement Default trait for SvgConfig

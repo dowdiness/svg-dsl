@@ -1,6 +1,10 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "antisatori/svg-dsl/lib"
 
+import {
+  "moonbitlang/core/debug",
+}
+
 // Values
 pub fn attr(String, String) -> Attr
 
@@ -204,8 +208,7 @@ pub fn xmlns() -> Attr
 pub struct Attr {
   name : String
   value : String
-}
-pub impl Eq for Attr
+} derive(Eq, @debug.Debug)
 pub impl Show for Attr
 
 pub enum PathCmd {
@@ -228,8 +231,7 @@ pub enum PathCmd {
   A(Double, Double, Double, Bool, Bool, Double, Double)
   A_rel(Double, Double, Double, Bool, Bool, Double, Double)
   Z
-}
-pub impl Eq for PathCmd
+} derive(Eq)
 pub impl Show for PathCmd
 
 pub struct SvgConfig {
@@ -240,7 +242,7 @@ pub struct SvgConfig {
   default_fill : String
   default_stroke_width : Double
   default_font_size : Double
-}
+} derive(Eq, @debug.Debug)
 pub fn SvgConfig::compact() -> Self
 pub fn SvgConfig::dark_theme() -> Self
 pub fn SvgConfig::default() -> Self
@@ -251,8 +253,6 @@ pub fn SvgConfig::with_indent(Self, Int) -> Self
 pub fn SvgConfig::with_precision(Self, Int) -> Self
 pub fn SvgConfig::with_xml_declaration(Self, Bool) -> Self
 pub impl Default for SvgConfig
-pub impl Eq for SvgConfig
-pub impl Show for SvgConfig
 
 pub enum SvgElement {
   Svg(attrs~ : Array[Attr], children~ : Array[SvgElement])
@@ -269,7 +269,7 @@ pub enum SvgElement {
   Marker(attrs~ : Array[Attr], children~ : Array[SvgElement])
   Use(attrs~ : Array[Attr])
   Raw(content~ : String)
-}
+} derive(Eq, @debug.Debug)
 pub fn SvgElement::add_child(Self, Self) -> Self
 pub fn SvgElement::add_children(Self, Array[Self]) -> Self
 pub fn SvgElement::class_(Self, String) -> Self
@@ -283,7 +283,6 @@ pub fn SvgElement::transforms(Self, Array[Transform]) -> Self
 pub fn SvgElement::with_attr(Self, Attr) -> Self
 pub fn SvgElement::with_attrs(Self, Array[Attr]) -> Self
 pub impl Renderable for SvgElement
-pub impl Eq for SvgElement
 pub impl Show for SvgElement
 
 pub enum Transform {
@@ -293,9 +292,8 @@ pub enum Transform {
   SkewX(Double)
   SkewY(Double)
   Matrix(Double, Double, Double, Double, Double, Double)
-}
+} derive(Eq)
 pub impl ToAttr for Transform
-pub impl Eq for Transform
 pub impl Show for Transform
 
 // Type aliases

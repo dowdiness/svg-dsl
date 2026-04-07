@@ -45,14 +45,24 @@ pub enum SvgElement {
   Use(attrs~ : Array[Attr])
   /// Raw SVG content (escape hatch for unsupported elements)
   Raw(content~ : String)
-} derive(Show, Eq)
+} derive(Debug, Eq)
+
+///|
+pub impl Show for SvgElement with output(self, logger) {
+  Show::output(@debug.to_repr(self), logger)
+}
 
 ///|
 /// Attribute key-value pair
 pub struct Attr {
   name : String
   value : String
-} derive(Show, Eq)
+} derive(Debug, Eq)
+
+///|
+pub impl Show for Attr with output(self, logger) {
+  Show::output(@debug.to_repr(self), logger)
+}
 
 ///|
 /// Path command for SVG path data
