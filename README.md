@@ -9,7 +9,7 @@ Add the package to your `moon.pkg.json` imports:
 ```json
 {
   "import": [
-    { "path": "antisatori/svg-dsl/lib", "alias": "svg" }
+    { "path": "dowdiness/svg-dsl/lib", "alias": "svg" }
   ]
 }
 ```

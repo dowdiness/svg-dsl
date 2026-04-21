@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "antisatori/svg-dsl/lib"
+package "dowdiness/svg-dsl/lib"
 
 import {
   "moonbitlang/core/debug",
