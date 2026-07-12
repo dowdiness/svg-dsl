@@ -300,10 +300,10 @@ pub impl Show for Transform
 
 // Traits
 pub trait Renderable {
-  render(Self) -> String
+  fn render(Self) -> String
 }
 
 pub trait ToAttr {
-  to_attr(Self) -> Attr
+  fn to_attr(Self) -> Attr
 }
 

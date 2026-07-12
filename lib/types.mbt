@@ -4,13 +4,13 @@
 ///|
 /// Trait for types that can be converted to an SVG attribute
 pub trait ToAttr {
-  to_attr(Self) -> Attr
+  fn to_attr(Self) -> Attr
 }
 
 ///|
 /// Trait for types that can be rendered to an SVG string
 pub trait Renderable {
-  render(Self) -> String
+  fn render(Self) -> String
 }
 
 ///|
@@ -48,7 +48,7 @@ pub enum SvgElement {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for SvgElement with output(self, logger) {
+pub impl Show for SvgElement with fn output(self, logger) {
   Show::output(@debug.to_repr(self), logger)
 }
 
@@ -60,7 +60,7 @@ pub struct Attr {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for Attr with output(self, logger) {
+pub impl Show for Attr with fn output(self, logger) {
   Show::output(@debug.to_repr(self), logger)
 }
 
@@ -109,7 +109,7 @@ pub enum PathCmd {
 
 ///|
 /// Custom Show implementation for PathCmd that outputs SVG path data format
-pub impl Show for PathCmd with output(self, logger) {
+pub impl Show for PathCmd with fn output(self, logger) {
   match self {
     M(x, y) => logger.write_string("M\{x} \{y}")
     M_rel(x, y) => logger.write_string("m\{x} \{y}")
@@ -162,7 +162,7 @@ pub enum Transform {
 
 ///|
 /// Custom Show implementation for Transform that outputs SVG transform format
-pub impl Show for Transform with output(self, logger) {
+pub impl Show for Transform with fn output(self, logger) {
   match self {
     Translate(tx, ty) => logger.write_string("translate(\{tx}, \{ty})")
     Scale(sx, sy) => logger.write_string("scale(\{sx}, \{sy})")
@@ -178,7 +178,7 @@ pub impl Show for Transform with output(self, logger) {
 
 ///|
 /// ToAttr implementation for Transform - creates a "transform" attribute
-pub impl ToAttr for Transform with to_attr(self) {
+pub impl ToAttr for Transform with fn to_attr(self) {
   { name: "transform", value: self.to_string() }
 }
 

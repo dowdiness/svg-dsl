@@ -3,7 +3,7 @@
 
 ///|
 /// Implement Renderable trait for SvgElement
-pub impl Renderable for SvgElement with render(self) {
+pub impl Renderable for SvgElement with fn render(self) {
   render_with_config(self, SvgConfig::default())
 }
 

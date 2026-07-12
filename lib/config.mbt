@@ -22,7 +22,7 @@ pub struct SvgConfig {
 
 ///|
 /// Implement Default trait for SvgConfig
-pub impl Default for SvgConfig with default() {
+pub impl Default for SvgConfig with fn default() {
   {
     indent: 2,
     precision: 2,
