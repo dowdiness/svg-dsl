@@ -306,4 +306,3 @@ pub trait Renderable {
 pub trait ToAttr {
   fn to_attr(Self) -> Attr
 }
-
