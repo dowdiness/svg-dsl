@@ -16,7 +16,7 @@ pub fn render(element : SvgElement) -> String {
 ///|
 /// Render an SvgElement to SVG string with custom configuration
 pub fn render_with_config(element : SvgElement, config : SvgConfig) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   if config.xml_declaration {
     buf.write_string("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
   }
@@ -176,7 +176,7 @@ fn make_indent(depth : Int, indent_size : Int) -> String {
     return ""
   }
   let total = depth * indent_size
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   for _ in 0..<total {
     buf.write_char(' ')
   }
@@ -216,3 +216,6 @@ pub fn render_for_html(element : SvgElement) -> String {
 pub fn render_compact(element : SvgElement) -> String {
   render_with_config(element, SvgConfig::compact())
 }
+
+///|
+pub extend SvgElement with Renderable::{render}

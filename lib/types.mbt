@@ -49,7 +49,7 @@ pub enum SvgElement {
 
 ///|
 pub impl Show for SvgElement with fn output(self, logger) {
-  Show::output(@debug.to_repr(self), logger)
+  Show::output(Repr(self), logger)
 }
 
 ///|
@@ -61,7 +61,7 @@ pub struct Attr {
 
 ///|
 pub impl Show for Attr with fn output(self, logger) {
-  Show::output(@debug.to_repr(self), logger)
+  Show::output(Repr(self), logger)
 }
 
 ///|
@@ -364,3 +364,36 @@ pub fn matrix(
 ) -> Transform {
   Matrix(a, b, c, d, e, f)
 }
+
+///|
+pub extend Attr with @moonbitlang/core/debug.Debug::{to_repr}
+
+///|
+pub extend Attr with Eq::{equal, not_equal}
+
+///|
+pub extend Attr with Show::{output, to_string}
+
+///|
+pub extend PathCmd with Eq::{equal, not_equal}
+
+///|
+pub extend PathCmd with Show::{output, to_string}
+
+///|
+pub extend SvgElement with @moonbitlang/core/debug.Debug::{to_repr}
+
+///|
+pub extend SvgElement with Eq::{equal, not_equal}
+
+///|
+pub extend SvgElement with Show::{output, to_string}
+
+///|
+pub extend Transform with Eq::{equal, not_equal}
+
+///|
+pub extend Transform with Show::{output, to_string}
+
+///|
+pub extend Transform with ToAttr::{to_attr}
