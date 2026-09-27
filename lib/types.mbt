@@ -179,7 +179,7 @@ pub impl Show for Transform with fn output(self, logger) {
 ///|
 /// ToAttr implementation for Transform - creates a "transform" attribute
 pub impl ToAttr for Transform with fn to_attr(self) {
-  { name: "transform", value: self.to_string() }
+  { name: "transform", value: self.to_string(), }
 }
 
 ///|
