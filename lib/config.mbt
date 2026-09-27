@@ -119,3 +119,9 @@ pub fn SvgConfig::with_default_fill(
 ) -> SvgConfig {
   { ..self, default_fill, }
 }
+
+///|
+pub extend SvgConfig with @moonbitlang/core/debug.Debug::{to_repr}
+
+///|
+pub extend SvgConfig with Eq::{equal, not_equal}

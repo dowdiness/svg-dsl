@@ -209,6 +209,11 @@ pub struct Attr {
   name : String
   value : String
 } derive(Eq, @debug.Debug)
+pub fn Attr::equal(Self, Self) -> Bool
+pub fn Attr::not_equal(Self, Self) -> Bool
+pub fn Attr::output(Self, &Logger) -> Unit
+pub fn Attr::to_repr(Self) -> @debug.Repr
+pub fn Attr::to_string(Self) -> String
 pub impl Show for Attr
 
 pub enum PathCmd {
@@ -232,6 +237,10 @@ pub enum PathCmd {
   A_rel(Double, Double, Double, Bool, Bool, Double, Double)
   Z
 } derive(Eq)
+pub fn PathCmd::equal(Self, Self) -> Bool
+pub fn PathCmd::not_equal(Self, Self) -> Bool
+pub fn PathCmd::output(Self, &Logger) -> Unit
+pub fn PathCmd::to_string(Self) -> String
 pub impl Show for PathCmd
 
 pub struct SvgConfig {
@@ -246,7 +255,10 @@ pub struct SvgConfig {
 pub fn SvgConfig::compact() -> Self
 pub fn SvgConfig::dark_theme() -> Self
 pub fn SvgConfig::default() -> Self
+pub fn SvgConfig::equal(Self, Self) -> Bool
 pub fn SvgConfig::for_html() -> Self
+pub fn SvgConfig::not_equal(Self, Self) -> Bool
+pub fn SvgConfig::to_repr(Self) -> @debug.Repr
 pub fn SvgConfig::with_default_fill(Self, String) -> Self
 pub fn SvgConfig::with_default_stroke(Self, String) -> Self
 pub fn SvgConfig::with_indent(Self, Int) -> Self
@@ -273,11 +285,17 @@ pub enum SvgElement {
 pub fn SvgElement::add_child(Self, Self) -> Self
 pub fn SvgElement::add_children(Self, Array[Self]) -> Self
 pub fn SvgElement::class_(Self, String) -> Self
+pub fn SvgElement::equal(Self, Self) -> Bool
 pub fn SvgElement::fill(Self, String) -> Self
 pub fn SvgElement::id(Self, String) -> Self
+pub fn SvgElement::not_equal(Self, Self) -> Bool
 pub fn SvgElement::opacity(Self, Double) -> Self
+pub fn SvgElement::output(Self, &Logger) -> Unit
+pub fn SvgElement::render(Self) -> String
 pub fn SvgElement::stroke(Self, String) -> Self
 pub fn SvgElement::stroke_width(Self, Double) -> Self
+pub fn SvgElement::to_repr(Self) -> @debug.Repr
+pub fn SvgElement::to_string(Self) -> String
 pub fn SvgElement::transform(Self, Transform) -> Self
 pub fn SvgElement::transforms(Self, Array[Transform]) -> Self
 pub fn SvgElement::with_attr(Self, Attr) -> Self
@@ -293,6 +311,11 @@ pub enum Transform {
   SkewY(Double)
   Matrix(Double, Double, Double, Double, Double, Double)
 } derive(Eq)
+pub fn Transform::equal(Self, Self) -> Bool
+pub fn Transform::not_equal(Self, Self) -> Bool
+pub fn Transform::output(Self, &Logger) -> Unit
+pub fn Transform::to_attr(Self) -> Attr
+pub fn Transform::to_string(Self) -> String
 pub impl ToAttr for Transform
 pub impl Show for Transform
 
