@@ -5,9 +5,9 @@
 /// Configuration for SVG rendering
 pub struct SvgConfig {
   /// Indentation spaces for pretty printing (0 for compact)
-  indent : Int
+  indent : Int32
   /// Decimal precision for coordinates
-  precision : Int
+  precision : Int32
   /// Include XML declaration header
   xml_declaration : Bool
   /// Default stroke color
@@ -84,14 +84,14 @@ pub fn SvgConfig::for_html() -> SvgConfig {
 
 ///|
 /// Builder-style configuration modification
-pub fn SvgConfig::with_indent(self : SvgConfig, indent : Int) -> SvgConfig {
+pub fn SvgConfig::with_indent(self : SvgConfig, indent : Int32) -> SvgConfig {
   { ..self, indent, }
 }
 
 ///|
 pub fn SvgConfig::with_precision(
   self : SvgConfig,
-  precision : Int,
+  precision : Int32,
 ) -> SvgConfig {
   { ..self, precision, }
 }

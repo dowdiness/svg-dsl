@@ -29,7 +29,7 @@ pub fn render_with_config(element : SvgElement, config : SvgConfig) -> String {
 fn render_element(
   buf : StringBuilder,
   element : SvgElement,
-  depth : Int,
+  depth : Int32,
   config : SvgConfig,
 ) -> Unit {
   let indent_str = make_indent(depth, config.indent)
@@ -149,7 +149,7 @@ fn render_element(
 fn render_children(
   buf : StringBuilder,
   children : Array[SvgElement],
-  depth : Int,
+  depth : Int32,
   config : SvgConfig,
 ) -> Unit {
   for child in children {
@@ -171,7 +171,7 @@ fn render_attrs(buf : StringBuilder, attrs : Array[Attr]) -> Unit {
 
 ///|
 /// Internal: create indentation string
-fn make_indent(depth : Int, indent_size : Int) -> String {
+fn make_indent(depth : Int32, indent_size : Int32) -> String {
   if indent_size <= 0 {
     return ""
   }

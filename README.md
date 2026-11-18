@@ -4,15 +4,22 @@ SVG DSL for programmatic SVG generation in MoonBit.
 
 ## Install
 
-Add the package to your `moon.pkg.json` imports:
+Install the module:
 
-```json
-{
-  "import": [
-    { "path": "dowdiness/svg-dsl/lib", "alias": "svg" }
-  ]
+```sh
+moon add dowdiness/svg-dsl@0.2.0
+```
+
+Add the package to your `moon.pkg` imports:
+
+```moonbit
+import {
+  "dowdiness/svg-dsl/lib" @svg,
 }
 ```
+
+This release is validated with MoonBit `0.10.15+943464bfa`. Compatibility
+with older compilers is not guaranteed.
 
 ## Usage
 
