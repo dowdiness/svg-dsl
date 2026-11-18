@@ -4,10 +4,10 @@
 ///|
 /// Create an SVG root element
 pub fn svg(
-  width? : Double = 100.0,
-  height? : Double = 100.0,
-  view_box? : (Double, Double, Double, Double)? = None,
-  children? : Array[SvgElement] = [],
+  width~ : Double = 100.0,
+  height~ : Double = 100.0,
+  view_box~ : (Double, Double, Double, Double)? = None,
+  children~ : Array[SvgElement] = [],
 ) -> SvgElement {
   let attrs : Array[Attr] = [xmlns(), attr_width(width), attr_height(height)]
   match view_box {
@@ -25,7 +25,7 @@ pub fn svg_viewbox(
   min_y : Double,
   vb_width : Double,
   vb_height : Double,
-  children? : Array[SvgElement] = [],
+  children~ : Array[SvgElement] = [],
 ) -> SvgElement {
   let attrs : Array[Attr] = [
     xmlns(),
@@ -37,27 +37,27 @@ pub fn svg_viewbox(
 ///|
 /// Create a group element
 pub fn g(
-  attrs? : Array[Attr] = [],
-  children? : Array[SvgElement] = [],
+  attrs~ : Array[Attr] = [],
+  children~ : Array[SvgElement] = [],
 ) -> SvgElement {
   G(attrs~, children~)
 }
 
 ///|
 /// Create a defs element
-pub fn defs(children? : Array[SvgElement] = []) -> SvgElement {
+pub fn defs(children~ : Array[SvgElement] = []) -> SvgElement {
   Defs(children~)
 }
 
 ///|
 /// Create a rectangle element
 pub fn rect(
-  x? : Double = 0.0,
-  y? : Double = 0.0,
-  width? : Double = 100.0,
-  height? : Double = 100.0,
-  rx? : Double? = None,
-  ry? : Double? = None,
+  x~ : Double = 0.0,
+  y~ : Double = 0.0,
+  width~ : Double = 100.0,
+  height~ : Double = 100.0,
+  rx~ : Double? = None,
+  ry~ : Double? = None,
 ) -> SvgElement {
   let attrs : Array[Attr] = [
     attr_x(x),
@@ -79,9 +79,9 @@ pub fn rect(
 ///|
 /// Create a circle element
 pub fn circle(
-  cx? : Double = 0.0,
-  cy? : Double = 0.0,
-  r? : Double = 50.0,
+  cx~ : Double = 0.0,
+  cy~ : Double = 0.0,
+  r~ : Double = 50.0,
 ) -> SvgElement {
   let attrs : Array[Attr] = [attr_cx(cx), attr_cy(cy), attr_r(r)]
   Circle(attrs~)
@@ -90,10 +90,10 @@ pub fn circle(
 ///|
 /// Create an ellipse element
 pub fn ellipse(
-  cx? : Double = 0.0,
-  cy? : Double = 0.0,
-  rx? : Double = 50.0,
-  ry? : Double = 25.0,
+  cx~ : Double = 0.0,
+  cy~ : Double = 0.0,
+  rx~ : Double = 50.0,
+  ry~ : Double = 25.0,
 ) -> SvgElement {
   let attrs : Array[Attr] = [attr_cx(cx), attr_cy(cy), attr_rx(rx), attr_ry(ry)]
   Ellipse(attrs~)
@@ -102,10 +102,10 @@ pub fn ellipse(
 ///|
 /// Create a line element
 pub fn line(
-  x1? : Double = 0.0,
-  y1? : Double = 0.0,
-  x2? : Double = 100.0,
-  y2? : Double = 100.0,
+  x1~ : Double = 0.0,
+  y1~ : Double = 0.0,
+  x2~ : Double = 100.0,
+  y2~ : Double = 100.0,
 ) -> SvgElement {
   let attrs : Array[Attr] = [attr_x1(x1), attr_y1(y1), attr_x2(x2), attr_y2(y2)]
   Line(attrs~)
@@ -143,8 +143,8 @@ pub fn path_cmds(commands : Array[PathCmd]) -> SvgElement {
 /// Create a text element
 pub fn text(
   content : String,
-  x? : Double = 0.0,
-  y? : Double = 0.0,
+  x~ : Double = 0.0,
+  y~ : Double = 0.0,
 ) -> SvgElement {
   let attrs : Array[Attr] = [attr_x(x), attr_y(y)]
   Text(content~, attrs~)
@@ -154,12 +154,12 @@ pub fn text(
 /// Create a marker element
 pub fn marker(
   id~ : String,
-  marker_width? : Double = 10.0,
-  marker_height? : Double = 10.0,
-  ref_x? : Double = 0.0,
-  ref_y? : Double = 0.0,
-  orient? : String = "auto",
-  children? : Array[SvgElement] = [],
+  marker_width~ : Double = 10.0,
+  marker_height~ : Double = 10.0,
+  ref_x~ : Double = 0.0,
+  ref_y~ : Double = 0.0,
+  orient~ : String = "auto",
+  children~ : Array[SvgElement] = [],
 ) -> SvgElement {
   let attrs : Array[Attr] = [
     attr_id(id),
@@ -176,8 +176,8 @@ pub fn marker(
 /// Create a use element
 pub fn use_(
   ref_id : String,
-  x? : Double = 0.0,
-  y? : Double = 0.0,
+  x~ : Double = 0.0,
+  y~ : Double = 0.0,
 ) -> SvgElement {
   let attrs : Array[Attr] = [href(ref_id), attr_x(x), attr_y(y)]
   Use(attrs~)
